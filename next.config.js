@@ -8,6 +8,7 @@ const nextConfig = {
       "upload.wikimedia.org",
       "avatars.githubusercontent.com",
       "lh3.googleusercontent.com",
+      "e1a4c9d0d2f9f737c5e1.ucr.io",
     ],
   },
   webpack: (config) => {
