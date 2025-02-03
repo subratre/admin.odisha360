@@ -1,47 +1,40 @@
 import React, { useState } from "react";
 import QuestionsAndMcq from "../questions & MCQ/QuestionsAndMcq";
 
-const NewTopic = ({
-  title,
-  courseId,
-  index,
-  handleEditTopic,
-  handleDeleteTopic,
-  id,
-}) => {
+const NewTopic = (props) => {
   const [showContent, setShowContent] = useState(false);
 
   const showContentArea = () => {
     setShowContent(!showContent);
   };
 
-  const handleEditContent = (e, index) => {
-    handleEditTopic(index);
+  const handleEditTopicName = (e, index) => {
+    props.handleEditTopic(index);
   };
   const handleDeleteClick = (e, index) => {
-    handleDeleteTopic(index);
+    props.handleDeleteTopic(index);
   };
   return (
     <div
-      key={index}
+      key={props.id}
       className="border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
     >
       <div className="flex items-center justify-between p-4 bg-gray-50 cursor-pointer">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-semibold">
-            {index + 1}
+            {props.index + 1}
           </span>
-          <h3 className="font-semibold text-gray-900">{title}</h3>
+          <h3 className="font-semibold text-gray-900">{props.name}</h3>
         </div>
         <div className="flex items-center gap-2">
           <button
-            onClick={(e) => handleEditContent(e, id)}
+            onClick={(e) => handleEditTopicName(e, props.id)}
             className="p-2 text-blue-500 hover:text-blue-700"
           >
             <i className="fa fa-edit"></i>
           </button>
           <button
-            onClick={(e) => handleDeleteClick(e, id)}
+            onClick={(e) => handleDeleteClick(e, props.id)}
             className="p-2 text-red-500 hover:text-red-700"
           >
             <i className="fa fa-trash"></i>
@@ -55,7 +48,7 @@ const NewTopic = ({
           </button>
         </div>
       </div>
-      <QuestionsAndMcq showContent={showContent} />
+      <QuestionsAndMcq showContent={showContent} topicId={props.id} />
       {/* <div className="p-4 border-t">
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
