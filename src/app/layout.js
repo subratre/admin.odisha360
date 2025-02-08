@@ -22,7 +22,9 @@ export default function RootLayout({ children }) {
           referrerpolicy="no-referrer"
         />
       </head>
-      <body className={`${inter.className} bg-gray-50`}>{children}</body>
+      <body className={`${inter.className} bg-gray-50  h-full w-full`}>
+        {children}
+      </body>
     </html>
   );
 }
